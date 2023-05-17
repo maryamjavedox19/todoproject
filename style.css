@@ -76,6 +76,14 @@ body{
     cursor: pointer;
     } 
 
+/* .drag{
+    color: #898181;
+    position: absolute;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: .9rem;
+    top: 35rem;
+} */
+
 .task,
 .iteminfo{
     position: relative;
@@ -90,6 +98,7 @@ body{
 
 .task{
     border-bottom: 1px solid #7d7575;
+    cursor: move;
 }
 
 
@@ -127,8 +136,6 @@ body{
 .hide{
     display: none;
 }
-
-
 
 
 

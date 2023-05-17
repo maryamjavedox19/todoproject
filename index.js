@@ -1,24 +1,9 @@
+const addtaskcontainer=document.getElementById('add-task-container');
 const addTask=document.getElementById('add-task');
 const taskContainer = document.getElementById('task-container');
 const inputTask= document.getElementById('input-task');
 const remainingItems=document.getElementsByClassName('remaining')[0];
 const lightmode=document.getElementsByClassName('lightmode')[0];
-
-
-// light mode
-let islightmode=false;
-lightmode.addEventListener('click', function(){
-if(!islightmode){
-    document.body.style.backgroundImage="url('https://wallpaperaccess.com/full/168823.jpg'), url('white2.jpg')";
-    islightmode=true;
-}
-
-else{
-    document.body.style.backgroundImage="url('https://wallpaperaccess.com/full/168823.jpg'), url('black.jpg')";
-    islightmode=false;
-}
-
-})
 
 // to track number of todo
 let iteminfo = document.createElement('div');
@@ -153,3 +138,27 @@ inputTask.value="";
         
 });
 
+
+
+// light mode
+let islightmode=false;
+lightmode.addEventListener('click', function(){
+if(!islightmode){
+    document.body.style.backgroundImage="url('https://wallpaperaccess.com/full/168823.jpg'), url('white2.jpg')";
+    islightmode=true;
+    addtaskcontainer.style.backgroundColor="white";
+    inputTask.style.backgroundColor="white";
+    inputTask.style.color="black";
+}
+
+else{
+    document.body.style.backgroundImage="url('https://wallpaperaccess.com/full/168823.jpg'), url('black.jpg')";
+    islightmode=false;
+    addtaskcontainer.style.backgroundColor="rgb(37, 35, 35)";
+    inputTask.style.backgroundColor="rgb(37, 35, 35)";
+    inputTask.style.color="white";
+}
+
+
+
+})
