@@ -25,6 +25,17 @@ body{
     font-weight: lighter;
  }
 
+ .lightmode{
+    position: relative;
+    top: -13.6rem;
+    left: 29rem;
+    font-size: larger;
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+ }
+
  .container{
     height: 50vh;
  }
@@ -37,7 +48,6 @@ body{
     margin-bottom: -5rem;
     padding: 22px 60px;
     background-color: rgb(37, 35, 35);
-    box-shadow:0 0 3px;
     }
 
 #input-task{
@@ -63,11 +73,8 @@ body{
     background-color: transparent;
     border: none;
     color: #716e6e;
+    cursor: pointer;
     } 
-/* 
- .remainingitems{
-display: flex;
-    } */
 
 .task,
 .iteminfo{
@@ -75,16 +82,18 @@ display: flex;
     top: 8rem;
     width: 460px;
     padding: 22px 60px;
-    background-color:rgb(37, 35, 35);;
-    box-shadow: 0 0 3px;
+    background-color:rgb(37, 35, 35);
     padding: 5px;
     display: flex;
     color: #a79d9d;
 }
 
+.task{
+    border-bottom: 1px solid #7d7575;
+}
+
+
 .iteminfo{
-    /* display: flex;
-    justify-content: space-between;   */
     display: grid;
     grid-template-columns: 150px 40px 45px 40px 250px;
 }
@@ -93,8 +102,12 @@ display: flex;
     background-color: transparent;
     border: none;
     color: #a79d9d;
+    cursor: pointer;
 }
 
+.itembtns:focus{
+    color: rgb(75, 75, 195);
+}
 
 .task li{
     list-style: none;
@@ -103,12 +116,17 @@ display: flex;
     margin: 10px;
 }
 
-.task .deleteTask{
+.deleteTask{
     color: #716e6e;
     border-color: transparent;
     background-color: transparent;
     font-size: 1.5rem;
+    cursor: pointer;
 } 
+
+.hide{
+    display: none;
+}
 
 
 

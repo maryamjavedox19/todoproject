@@ -2,6 +2,23 @@ const addTask=document.getElementById('add-task');
 const taskContainer = document.getElementById('task-container');
 const inputTask= document.getElementById('input-task');
 const remainingItems=document.getElementsByClassName('remaining')[0];
+const lightmode=document.getElementsByClassName('lightmode')[0];
+
+
+// light mode
+let islightmode=false;
+lightmode.addEventListener('click', function(){
+if(!islightmode){
+    document.body.style.backgroundImage="url('https://wallpaperaccess.com/full/168823.jpg'), url('white2.jpg')";
+    islightmode=true;
+}
+
+else{
+    document.body.style.backgroundImage="url('https://wallpaperaccess.com/full/168823.jpg'), url('black.jpg')";
+    islightmode=false;
+}
+
+})
 
 // to track number of todo
 let iteminfo = document.createElement('div');
@@ -26,6 +43,7 @@ iteminfo.appendChild(activebtn);
 let completed=document.createElement('button');
 completed.innerHTML="Completed";
 completed.classList.add('itembtns');
+completed.classList.add('completed');
 iteminfo.appendChild(completed);
 
 
@@ -34,7 +52,6 @@ let clearcmp=document.createElement('button');
 clearcmp.innerHTML="Clear Completed";
 clearcmp.classList.add('itembtns');
 iteminfo.appendChild(clearcmp);
-
 
 
 // when new todo is added
@@ -70,34 +87,69 @@ inputTask.value="";
 
 
     // when checked
+     let checked=false;
      checkButton.addEventListener('click', function(){
+        if(count==0){
+            return;
+        }
+
+    if(checked==true){
+        return;
+    }
      checkButton.parentElement.style.textDecoration = "line-through";
+     checked=true;
      count--;
         itemno.innerText = `${count} item left`;
     });
 
 
-    // deleting completed tasks
-   clearcmp.addEventListener('click', function(){
-    const childElements = task.querySelectorAll('*');
-    //     childElements.forEach(function(child){
-    //         if(child.style.textDecoration = "line-through"){
-    //             child.remove();
-    //             child.classList.remove('task');
-    //         }
-    // })
+      //Active button function
 
-    for(i=0; i<childElements; i++){
-        if(childElements.style.textDecoration = "line-through"){
-               childElements.remove();
-    }
-   }
-});
+      activebtn.addEventListener('click', function(){
+        let taskElementsArray = document.getElementsByClassName('task');
+        Array.prototype.forEach.call(taskElementsArray, function(element) {
+           if(element.style.textDecoration === "line-through") {
+            element.classList.add('hide');
+          } else {
+            element.classList.remove('hide');
+          }
+        });
+      });
+
+
+
+    // deleting all checked todos
+    clearcmp.addEventListener('click', function(){
+        let taskElementsArray = document.getElementsByClassName('task');
+        // each task with line-through text decoration gets removed
+        Array.prototype.forEach.call(taskElementsArray, function(element) {
+            if(element.style.textDecoration == "line-through") {
+                element.remove();
+            }
+        });
+    });
+
+
+    // showing completed task
+    completed.addEventListener('click', function(){
+        let taskElementsArray = document.getElementsByClassName('task');
+        Array.prototype.forEach.call(taskElementsArray, function(element) {
+            if(element.style.textDecoration !== "line-through") {
+                element.classList.add('hide');
+            }
+        });
+    });
+
+
+        // showing ALL task   
+        all.addEventListener('click', function(){
+            let taskElementsArray = document.getElementsByClassName('task');
+            Array.prototype.forEach.call(taskElementsArray, function(element) {
+                if (element.classList.contains('hide')) {
+                    element.classList.remove('hide');
+                }
+            });
+        });     
         
-
-
-
-
-
 });
 
