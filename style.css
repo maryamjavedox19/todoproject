@@ -76,13 +76,13 @@ body{
     cursor: pointer;
     } 
 
-/* .drag{
+.drag{
     color: #898181;
     position: absolute;
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-size: .9rem;
     top: 35rem;
-} */
+}
 
 .task,
 .iteminfo{

@@ -5,6 +5,48 @@ const inputTask= document.getElementById('input-task');
 const remainingItems=document.getElementsByClassName('remaining')[0];
 const lightmode=document.getElementsByClassName('lightmode')[0];
 
+////////////////////////////////////////////////MAKE TASKS DRAGGABLE////////////////////////////////////////////////
+let draggedTask = null;
+
+// Function called when drag starts
+function dragStart(event) {
+  draggedTask = event.target;
+  event.dataTransfer.setData("text/plain", event.target.innerHTML);
+}
+
+// Function called when drag over
+function dragOver(event) {
+  event.preventDefault();
+}
+
+// Function called when drop happens
+function drop(event) {
+  event.preventDefault();
+  if (draggedTask) {
+    const dropTarget = event.target;
+    const taskContainer = document.getElementById("task-container");
+    const tasks = Array.from(taskContainer.getElementsByClassName("task"));
+    const dropIndex = tasks.indexOf(dropTarget);
+
+    // Reorder the tasks
+    if (dropIndex == tasks.length-1){
+        taskContainer.removeChild(draggedTask);
+        taskContainer.appendChild(draggedTask);
+      } 
+    else if (dropIndex !== -1) {
+      taskContainer.removeChild(draggedTask);
+      taskContainer.insertBefore(draggedTask, tasks[dropIndex]);
+    }
+
+    draggedTask = null;
+  }
+}
+
+taskContainer.addEventListener("dragover", dragOver);
+taskContainer.addEventListener("drop", drop);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // to track number of todo
 let iteminfo = document.createElement('div');
 iteminfo.classList.add('iteminfo');
@@ -43,6 +85,8 @@ iteminfo.appendChild(clearcmp);
 addTask.addEventListener('click', function(){
 let task=document.createElement('div');         //-----------------------------
 task.classList.add('task');
+task.draggable = true;
+task.addEventListener("dragstart", dragStart);
 
 //check button
 let checkButton=document.createElement("button");
@@ -138,28 +182,9 @@ inputTask.value="";
                 }
             });
         });   
-        
-        
-        // drag and drop
-        // let listarray=document.querySelectorAll('.draggables');
-        //     Array.prototype.forEach.call(listarray, function(draggable) {
-        //         draggable.classList.add('dragging');
-        //     })
-                
-        //     draggable.addEventListener('dragend', ()=>{
-        //         draggable.classList.remove('dragging');
-        //     })
+      
+        })
 
-        // })
-
-        // let taskarray=document.querySelectorAll('.taskContainer');
-        // Array.prototype.forEach.call(taskarray, function(container) {
-        //     container.addEventListener('dragover', e => {
-        //         e.preventDefault()      //to remove do not allow cursor
-        //         const draggable=document.querySelector('dragging')
-        //         container.appendChild(draggable)
-        //     })
-        // })
 
 
 
@@ -186,3 +211,5 @@ else{
 
 
 })
+
+
