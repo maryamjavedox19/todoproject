@@ -41,7 +41,7 @@ iteminfo.appendChild(clearcmp);
 
 // when new todo is added
 addTask.addEventListener('click', function(){
-let task=document.createElement('div'); 
+let task=document.createElement('div');         //-----------------------------
 task.classList.add('task');
 
 //check button
@@ -53,7 +53,10 @@ task.appendChild(checkButton);
 
 let li=document.createElement('li'); 
 li.innerText=`${inputTask.value}`; 
+li.classList.add('draggables');
+li.setAttribute('draggable', 'true');
 task.appendChild(li);
+
 
 
 if(inputTask.value===""){
@@ -134,9 +137,29 @@ inputTask.value="";
                     element.classList.remove('hide');
                 }
             });
-        });     
+        });   
         
-});
+        
+        // drag and drop
+        // let listarray=document.querySelectorAll('.draggables');
+        //     Array.prototype.forEach.call(listarray, function(draggable) {
+        //         draggable.classList.add('dragging');
+        //     })
+                
+        //     draggable.addEventListener('dragend', ()=>{
+        //         draggable.classList.remove('dragging');
+        //     })
+
+        // })
+
+        // let taskarray=document.querySelectorAll('.taskContainer');
+        // Array.prototype.forEach.call(taskarray, function(container) {
+        //     container.addEventListener('dragover', e => {
+        //         e.preventDefault()      //to remove do not allow cursor
+        //         const draggable=document.querySelector('dragging')
+        //         container.appendChild(draggable)
+        //     })
+        // })
 
 
 
@@ -158,6 +181,7 @@ else{
     inputTask.style.backgroundColor="rgb(37, 35, 35)";
     inputTask.style.color="white";
 }
+
 
 
 
