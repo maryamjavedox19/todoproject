@@ -119,21 +119,21 @@ inputTask.value="";
 
 
     // when checked
-     let checked=false;
-     checkButton.addEventListener('click', function(){
-        if(count==0){
-            return;
-        }
-
-    if(checked==true){
-        return;
-    }
-     checkButton.parentElement.style.textDecoration = "line-through";
-     checked=true;
-     count--;
-        itemno.innerText = `${count} item left`;
+    checkButton.addEventListener('click', function() {
+      const parentElement = checkButton.parentElement;
+      const isTaskChecked = parentElement.classList.contains('checked');
+    
+      if (isTaskChecked) {
+        parentElement.classList.remove('checked');
+        count++;
+      } else {
+        parentElement.classList.add('checked');
+        count--;
+      }
+    
+      itemno.innerText = `${count} item left`;
     });
-
+    
 
       //Active button function
 

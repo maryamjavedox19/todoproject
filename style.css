@@ -5,13 +5,14 @@ body{
     background-repeat: no-repeat no-repeat;
     background-size: cover, cover;
     background-position: top, bottom;
-    background-size: 100% 45%, 100% 55%;
+    background-size: 100% 45%, 100% 100%;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: black;
  }
 
  h2{
@@ -137,3 +138,6 @@ body{
     display: none;
 }
 
+.checked {
+    text-decoration: line-through;
+  }
