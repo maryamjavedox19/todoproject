@@ -105,8 +105,9 @@ body{
 
 .iteminfo{
     display: grid;
-    grid-template-columns: 150px 40px 45px 40px 250px;
+    grid-template-columns: 150px 40px 45px 50px 200px;
 }
+
 
 .itembtns{
     background-color: transparent;
@@ -114,6 +115,11 @@ body{
     color: #a79d9d;
     cursor: pointer;
 }
+
+.itembtns:last-child{
+    margin-left: 2rem;
+}
+
 
 .itembtns:focus{
     color: rgb(75, 75, 195);
@@ -141,3 +147,5 @@ body{
 .checked {
     text-decoration: line-through;
   }
+
+

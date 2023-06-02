@@ -83,7 +83,7 @@ iteminfo.appendChild(clearcmp);
 
 // when new todo is added
 addTask.addEventListener('click', function(){
-let task=document.createElement('div');         //-----------------------------
+let task=document.createElement('div');       
 task.classList.add('task');
 task.draggable = true;
 task.addEventListener("dragstart", dragStart);
@@ -119,20 +119,32 @@ inputTask.value="";
 
 
     // when checked
-    checkButton.addEventListener('click', function() {
-      const parentElement = checkButton.parentElement;
-      const isTaskChecked = parentElement.classList.contains('checked');
-    
-      if (isTaskChecked) {
-        parentElement.classList.remove('checked');
-        count++;
-      } else {
-        parentElement.classList.add('checked');
-        count--;
+    let checked=false;
+    function toggle() {
+      checked = !checked; // Toggle the variable value
+    }
+
+    function ischecked(){
+      if (checkButton.parentElement.classList.contains('checked')){
+        checkButton.parentElement.classList.remove('checked');
       }
+      else{
+        checkButton.parentElement.classList.add('checked');
+      }
+    }
     
-      itemno.innerText = `${count} item left`;
-    });
+    
+    checkButton.addEventListener('click', function(){
+    ischecked();
+    toggle();
+    if(checked==true){
+      count--
+    }
+    else{
+      count++;
+    }
+       itemno.innerText = `${count} item left`;
+   });
     
 
       //Active button function
@@ -140,7 +152,7 @@ inputTask.value="";
       activebtn.addEventListener('click', function(){
         let taskElementsArray = document.getElementsByClassName('task');
         Array.prototype.forEach.call(taskElementsArray, function(element) {
-           if(element.style.textDecoration === "line-through") {
+           if(element.classList.contains('checked')) {
             element.classList.add('hide');
           } else {
             element.classList.remove('hide');
@@ -155,7 +167,7 @@ inputTask.value="";
         let taskElementsArray = document.getElementsByClassName('task');
         // each task with line-through text decoration gets removed
         Array.prototype.forEach.call(taskElementsArray, function(element) {
-            if(element.style.textDecoration == "line-through") {
+            if(element.classList.contains('checked')) {
                 element.remove();
             }
         });
@@ -166,7 +178,7 @@ inputTask.value="";
     completed.addEventListener('click', function(){
         let taskElementsArray = document.getElementsByClassName('task');
         Array.prototype.forEach.call(taskElementsArray, function(element) {
-            if(element.style.textDecoration !== "line-through") {
+            if(!element.classList.contains('checked')) {
                 element.classList.add('hide');
             }
         });
@@ -184,8 +196,6 @@ inputTask.value="";
         });   
       
         })
-
-
 
 
 // light mode
@@ -211,5 +221,4 @@ else{
 
 
 })
-
 
