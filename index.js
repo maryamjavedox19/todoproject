@@ -184,6 +184,7 @@ lightmode.addEventListener("click", function () {
   if (!islightmode) {
     document.body.style.backgroundImage =
       "url('https://wallpaperaccess.com/full/168823.jpg'), url('white2.jpg')";
+      document.body.style.backgroundColor="white";
     islightmode = true;
     addtaskcontainer.style.backgroundColor = "white";
     inputTask.style.backgroundColor = "white";
